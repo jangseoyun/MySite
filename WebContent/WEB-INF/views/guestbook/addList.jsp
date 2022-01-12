@@ -1,8 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ page import="java.util.List" %>
+<%@ page import="com.javaex.vo.GuestbookVo" %>
 
 <%
-	request.getAttribute("gbList");
+	List<GuestbookVo> gbList = (List<GuestbookVo>)request.getAttribute("gbList");
 %>
 
 <!DOCTYPE html>
@@ -21,7 +23,7 @@
 
 		<div id="header" class="clearfix">
 			<h1>
-				<a href="">MySite</a>
+				<a href="/mysite/main">MySite</a>
 			</h1>
 
 			<!-- 
@@ -74,7 +76,7 @@
 				<!-- //content-head -->
 
 				<div id="guestbook">
-					<form action="" method="">
+					<form action="" method="get">
 						<table id="guestAdd">
 							<colgroup>
 								<col style="width: 70px;">
@@ -105,27 +107,8 @@
 						
 					</form>	
 					
-					
-					<table class="guestRead">
-						<colgroup>
-							<col style="width: 10%;">
-							<col style="width: 40%;">
-							<col style="width: 40%;">
-							<col style="width: 10%;">
-						</colgroup>
-						<tr>
-							<td>1234555</td>
-							<td>이정재</td>
-							<td>2020-03-03 12:12:12</td>
-							<td><a href="">[삭제]</a></td>
-						</tr>
-						<tr>
-							<td colspan=4 class="text-left">방명록 글입니다. 방명록 글입니다.</td>
-						</tr>
-					</table>
-					<!-- //guestRead -->
-					
-					<table class="guestRead">
+					<% for(int i = 0; i<gbList.size(); i++){%>
+						<table class="guestRead">
 						<colgroup>
 								<col style="width: 10%;">
 								<col style="width: 40%;">
@@ -133,17 +116,18 @@
 								<col style="width: 10%;">
 						</colgroup>
 						<tr>
-							<td>1234555</td>
-							<td>이정재</td>
-							<td>2020-03-03 12:12:12</td>
-							<td><a href="">[삭제]</a></td>
+							<td><%= gbList.get(i).getNo() %></td>
+							<td><%= gbList.get(i).getName() %></td>
+							<td><%= gbList.get(i).getRegDate() %></td>
+							<td><a href="/mysite/guest?action=deleteForm&no=<%=gbList.get(i).getNo()%>">[삭제]</a></td>
 						</tr>
 						<tr>
-							<td colspan=4 class="text-left">방명록 글입니다. 방명록 글입니다.</td>
+							<td colspan=4 class="text-left"><%= gbList.get(i).getContent() %></td>
 						</tr>
 					</table>	
 					<!-- //guestRead -->
-					
+					<% } %>
+
 				</div>
 				<!-- //guestbook -->
 			
