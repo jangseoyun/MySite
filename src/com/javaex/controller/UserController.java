@@ -102,8 +102,39 @@ public class UserController extends HttpServlet {
 				
 			System.out.println("action=modifyForm");
 			
+			int no = Integer.parseInt(request.getParameter("no"));
+			
+			UserDao userDao = new UserDao();
+			UserVo userPerson = userDao.getPerson(no);
+			
+			System.out.println(userPerson+"controller");
+			
+			//데이터 보내기
+			request.setAttribute("userPerson", userPerson);
 			//포워드
 			WebUtil.forward(request, response, "/WEB-INF/views/user/modifyForm.jsp");
+		
+		} else if ("modify".equals(action)) {
+			
+			System.out.println("action=modify");
+			
+			//파라미터 받아오기
+			String password = request.getParameter("pass");
+			String name = request.getParameter("name");
+			String gender = request.getParameter("gender");
+			int no = Integer.parseInt(request.getParameter("no"));
+			
+			//데이터 넣기
+			UserVo userVo = new UserVo(no,password,name,gender);
+			
+			UserDao userDao = new UserDao();
+			userDao.userUpdate(userVo);
+			
+			request.setAttribute("userUpdate", userDao);
+			
+			//포워드
+			WebUtil.forward(request, response, "/WEB-INF/views/main/index.jsp");
+			
 		}
 		
 		
