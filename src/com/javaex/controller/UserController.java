@@ -98,6 +98,12 @@ public class UserController extends HttpServlet {
 			//리다이렉트
 			WebUtil.redirect(request, response, "/mysite/main");
 			
+		} else if ("modifyForm".equals(action)){
+				
+			System.out.println("action=modifyForm");
+			
+			//포워드
+			WebUtil.forward(request, response, "/WEB-INF/views/user/modifyForm.jsp");
 		}
 		
 		
