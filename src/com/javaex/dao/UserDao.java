@@ -26,6 +26,7 @@ public class UserDao {
 	// 메소드 gs
 
 	// 메소드 일반
+	
 	// 연결하기
 	private void getConnection() {
 
@@ -92,8 +93,52 @@ public class UserDao {
 		this.close();
 		return count;
 		
-	}
+	} 
 	
+	//1명의 회원정보 가져오기 (로그인용)
+	public UserVo getUser(String id, String password) {
+		
+		UserVo userVo = null;
+		
+		this.getConnection();
+		
+		try {
+			// 3. SQL문 준비 / 바인딩 / 실행
+			String query = "";
+			query += " select  no, ";
+			query += "         name ";
+			query += " from users ";
+			query += " where id = ? ";
+			query += " and password = ? ";
+			
+			// 쿼리문으로 변경
+			pstmt = conn.prepareStatement(query);
+			
+			// 바인딩
+			pstmt.setString(1, id);
+			pstmt.setString(2, password);
+			
+			//실행
+			rs = pstmt.executeQuery();
+
+			// 4.결과처리
+			while(rs.next()) {
+				
+				int no = rs.getInt("no");
+				String name = rs.getString("name");
+				
+				userVo = new UserVo();
+				userVo.setNo(no);
+				userVo.setName(name);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		}
+		
+		this.close();
+		return userVo;
+	}
 	
 	
 

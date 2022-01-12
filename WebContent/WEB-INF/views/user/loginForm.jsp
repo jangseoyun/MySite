@@ -15,7 +15,7 @@
 
 		<div id="header" class="clearfix">
 			<h1>
-				<a href="">MySite</a>
+				<a href="/mysite/main">MySite</a>
 			</h1>
 
 			<!-- 
@@ -26,8 +26,8 @@
 			</ul>
 			-->	
 			<ul>
-				<li><a href="" class="btn_s">로그인</a></li>
-				<li><a href="" class="btn_s">회원가입</a></li>
+				<li><a href="/mysite/user?action=loginForm" class="btn_s">로그인</a></li>
+				<li><a href="/mysite/user?action=joinForm" class="btn_s">회원가입</a></li>
 			</ul>
 			
 		</div>
@@ -71,25 +71,26 @@
 	
 				<div id="user">
 					<div id="loginForm">
-						<form action="" method="">
+						<form action="user" method="get">
 	
 							<!-- 아이디 -->
 							<div class="form-group">
 								<label class="form-text" for="input-uid">아이디</label> 
-								<input type="text" id="input-uid" name="" value="" placeholder="아이디를 입력하세요">
+								<input type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요">
 							</div>
 	
 							<!-- 비밀번호 -->
 							<div class="form-group">
 								<label class="form-text" for="input-pass">비밀번호</label> 
-								<input type="text" id="input-pass" name="" value="" placeholder="비밀번호를 입력하세요"	>
+								<input type="text" id="input-pass" name="password" value="" placeholder="비밀번호를 입력하세요"	>
 							</div>
 	
 							
 							<!-- 버튼영역 -->
 							<div class="button-area">
-								<button type="submit" id="btn-submit">로그인</button>
+								<button type="submit" id="btn-submit" name="action" value="login">로그인</button>
 							</div>
+							<!-- <input type="text" name="action" value="login"> -->
 							
 						</form>
 					</div>
