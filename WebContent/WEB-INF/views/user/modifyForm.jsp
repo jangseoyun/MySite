@@ -114,7 +114,10 @@
 	
 							<!-- 버튼영역 -->
 							<div class="button-area">
-								<button type="submit" id="btn-submit">회원정보수정</button>
+								<button type="submit" id="btn-submit" name="action" value="modify">
+									회원정보수정
+								</button>
+								<input type="text" name="no" value="<%= authUser.getNo() %>">
 							</div>
 							
 						</form>

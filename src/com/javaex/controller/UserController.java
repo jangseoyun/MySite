@@ -119,7 +119,7 @@ public class UserController extends HttpServlet {
 			System.out.println("action=modify");
 			
 			//파라미터 받아오기
-			String password = request.getParameter("pass");
+			String password = request.getParameter("password");
 			String name = request.getParameter("name");
 			String gender = request.getParameter("gender");
 			int no = Integer.parseInt(request.getParameter("no"));
