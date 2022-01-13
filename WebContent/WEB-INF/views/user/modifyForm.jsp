@@ -1,12 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-<%@ page import="com.javaex.vo.UserVo" %>
-
-<%
-	UserVo authUser = (UserVo)session.getAttribute("authUser");
-	
-	UserVo beforePerson = (UserVo)request.getAttribute("userPerson");
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -22,7 +15,7 @@
 	<div id="wrap">
 
 		<!-- header와 nav 있는 자리를 공통으로 묶은 것  -->
-		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+		<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 
 		<div id="container" class="clearfix">
 			<div id="aside">
@@ -57,19 +50,19 @@
 							<!-- 아이디 -->
 							<div class="form-group">
 								<label class="form-text" for="input-uid">아이디</label> 
-								<span class="text-large bold"><%= beforePerson.getId() %></span>
+								<span class="text-large bold">${requestScope.userPerson.id}</span>
 							</div>
 	
 							<!-- 비밀번호 -->
 							<div class="form-group">
 								<label class="form-text" for="input-pass">패스워드</label> 
-								<input type="text" id="input-pass" name="password" value="<%= beforePerson.getPassword() %>" placeholder="비밀번호를 입력하세요"	>
+								<input type="text" id="input-pass" name="password" value="${requestScope.userPerson.password}" placeholder="비밀번호를 입력하세요"	>
 							</div>
 	
 							<!-- 이메일 -->
 							<div class="form-group">
 								<label class="form-text" for="input-name">이름</label> 
-								<input type="text" id="input-name" name="name" value="<%= beforePerson.getName() %>" placeholder="이름을 입력하세요">
+								<input type="text" id="input-name" name="name" value="${requestScope.userPerson.name}" placeholder="이름을 입력하세요">
 							</div>
 							
 							<!-- //나이 -->
@@ -88,7 +81,7 @@
 								<button type="submit" id="btn-submit" name="action" value="modify">
 									회원정보수정
 								</button>
-								<input type="text" name="no" value="<%= authUser.getNo() %>">
+								<input type="text" name="no" value="${sessionScope.authUser.no}">
 							</div>
 							
 						</form>
@@ -105,7 +98,7 @@
 		<!-- //container  -->
 
 		<!-- //footer include로 공통으로 뺌 -->
-		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
+		<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 		
 	</div>
 	<!-- //wrap -->

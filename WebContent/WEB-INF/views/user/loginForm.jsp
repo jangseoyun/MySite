@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-<% String result = request.getParameter("result"); %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -16,7 +14,7 @@
 	<div id="wrap">
 
 		<!-- header와 nav 있는 자리를 공통으로 묶은 것  -->
-		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+		<c:import url = "/WEB-INF/views/include/header.jsp"></c:import>
 
 		<div id="container" class="clearfix">
 			<div id="aside">
@@ -59,10 +57,10 @@
 								<label class="form-text" for="input-pass">비밀번호</label> 
 								<input type="text" id="input-pass" name="password" value="" placeholder="비밀번호를 입력하세요"	>
 							</div>
-							
-							<% if("fail".equals(result)){%>
+
+							<c:if test="${param.result eq 'fail' }">
 								<p>[로그인에 실패하였습니다. 다시 시도 해주세요]</p>
-							<%}%>
+							</c:if>
 							
 							<!-- 버튼영역 -->
 							<div class="button-area">
@@ -82,7 +80,7 @@
 		<!-- //container  -->
 
 		<!-- //footer include로 공통으로 뺌 -->
-		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
+		<c:import url = "/WEB-INF/views/include/footer.jsp"></c:import>
 
 	</div>
 	<!-- //wrap -->

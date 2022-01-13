@@ -17,7 +17,7 @@
 	<div id="wrap">
 
 		<!-- header와 nav 있는 자리를 공통으로 묶은 것 / 자바 문법이다  -->
-		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+		<%-- <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include> --%>
 
 		<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 		
@@ -65,8 +65,9 @@
 		
 
 		<!-- //footer include로 공통으로 뺌 -->
-		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
-
+		<%-- <jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include> --%>
+		<c:import url = "/WEB-INF/views/include/footer.jsp"></c:import>
+		
 	</div>
 	<!-- //wrap -->
 
