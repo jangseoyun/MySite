@@ -132,8 +132,8 @@ public class UserController extends HttpServlet {
 			
 			request.setAttribute("userUpdate", userDao);
 			
-			//포워드
-			WebUtil.forward(request, response, "/WEB-INF/views/main/index.jsp");
+			//리다이렉트
+			WebUtil.redirect(request, response, "/mysite/main");
 			
 		}
 		
