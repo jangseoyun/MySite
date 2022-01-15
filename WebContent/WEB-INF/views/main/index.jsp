@@ -6,7 +6,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>main</title>
 <%--url주소이다. css에 있는것을 다 다운받아서 쓰는것  --%>
 <link href="/mysite/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="/mysite/assets/css/main.css" rel="stylesheet" type="text/css">
@@ -33,7 +33,7 @@
 					<div id="greetings">
 						<p class="text-xlarge">
 							<span class="bold">안녕하세요!!<br>
-							황일영의 MySite에 오신 것을 환영합니다.<br>
+							장서윤의 MySite에 오신 것을 환영합니다.<br>
 							<br>
 							이 사이트는 웹 프로그램밍 실습과제 예제 사이트입니다.<br>
 							</span>

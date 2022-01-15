@@ -129,6 +129,7 @@ public class BoardDao {
 				int hit = rs.getInt("hit");
 				String regDate = rs.getString("reg_date");
 
+
 				boardVo = new BoardVo(bNo, title, hit, regDate, uNo, name,userNo);
 				bList.add(boardVo);
 
@@ -260,6 +261,41 @@ public class BoardDao {
 		this.close();
 		return boardVo;
 		
+	}
+	
+	// -----------update 수정------------------------------------------------
+	public int boardUpdate(BoardVo boardVo) {
+		
+		this.getConnection();
+		int count = 0;
+		
+		try {
+			
+			//문자열
+			String query = "";
+			query += " update board ";
+			query += " set title = ?, ";
+			query += "     content = ? ";
+			query += " where no = ? ";
+			
+			//쿼리문
+			pstmt = conn.prepareStatement(query);
+			
+			//바인딩
+			pstmt.setString(1, boardVo.getTitle());
+			pstmt.setString(2, boardVo.getContent());
+			pstmt.setInt(3, boardVo.getbNo());
+			
+			//실행
+			count = pstmt.executeUpdate();
+			System.out.println(count+"건이 수정되었습니다");
+			
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		}
+		
+		this.close();
+		return count;
 	}
 
 }

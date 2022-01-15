@@ -45,7 +45,8 @@
 	
 				<div id="board">
 					<div id="writeForm">
-						<form action="#" method="get">
+					
+						<form action="boardAdd" method="get">
 							<!-- 제목 -->
 							<div class="form-group">
 								<label class="form-text" for="txt-title">제목</label>
@@ -54,16 +55,14 @@
 						
 							<!-- 내용 -->
 							<div class="form-group">
-								<textarea id="txt-content" name="content" value=""></textarea>
+								<textarea id="txt-content" name="content"></textarea>
 							</div>
-							
 							<input type="text" name="uNo" value="${sessionScope.authUser.no}">
-							<input type="text" name="name" value="${sessionScope.authUser.name}">
 							<a id="btn_cancel" href="/myste/board?action=boardList">취소</a>
 							<button id="btn_add" type="submit" name="action" value="boardAdd">등록</button>
-							
 						</form>
 						<!-- //form -->
+						
 					</div>
 					<!-- //writeForm -->
 				</div>

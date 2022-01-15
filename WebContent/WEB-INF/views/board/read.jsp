@@ -78,8 +78,8 @@
 							</div>
 
 							<c:choose>
-								<c:when test="${param.userNo == sessionScope.no}">
-									<a id="btn_modify" href="">수정</a>
+								<c:when test="${requestScope.getBoard.userNo == sessionScope.authUser.no}">
+									<a id="btn_modify" href="/mysite/board?action=modifyForm&bNo=${requestScope.getBoard.bNo}">수정</a>
 									<a id="btn_modify" href="/mysite/board?action=boardList">목록</a>
 								</c:when>
 								<c:otherwise>

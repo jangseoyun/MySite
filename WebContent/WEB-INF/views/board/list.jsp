@@ -29,7 +29,6 @@
 			<!-- //aside -->
 
 			<div id="content">
-
 				<div id="content-head">
 					<h3>게시판</h3>
 					<div id="location">
@@ -62,27 +61,28 @@
 									<th>관리</th>
 								</tr>
 							</thead>
+							
 							<tbody>
 								<c:forEach items="${requestScope.bList}" var="bList">
 									<tr class="last">
 										<td>${bList.bNo}</td>
 										<td class="text-left">
-											<a href="/mysite/board?action=boardRead&bNo=${bList.bNo}&userNo=${bList.userNo}">
+											<a href="/mysite/board?action=boardRead&bNo=${bList.bNo}">
 												${bList.title}
 											</a>
 										</td>
 										<td>${bList.uName}</td>
 										<td>${bList.hit}</td>
 										<td>${bList.regDate}</td>
-										<c:choose>
-											<c:when test="${sessionScope.authUser.name == bList.uName}">
-												<td><a href="/mysite/board?action=boardDelete&bNo=${bList.bNo}">[삭제]</a></td>
-											</c:when>
-											<c:otherwise></c:otherwise>
-										</c:choose>
+										<c:if test="${sessionScope.authUser.no == bList.userNo}">
+											<td>
+												<a href="/mysite/board?action=boardDelete&bNo=${bList.bNo}">[삭제]</a>
+											</td>
+										</c:if>
 									</tr>
 								</c:forEach>
 							</tbody>
+							
 						</table>
 						
 						<div id="paging">
