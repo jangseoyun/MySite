@@ -96,6 +96,7 @@ public class GuestBookDao {
 
 				GuestbookVo vo = new GuestbookVo(no, name, password, content, regDate);
 				list.add(vo);
+				
 			}
 		} catch (SQLException e) {
 			System.out.println("error:" + e);
