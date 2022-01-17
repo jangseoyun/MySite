@@ -59,21 +59,32 @@
 								<input type="text" id="input-pass" name="password" value="${requestScope.userPerson.password}" placeholder="비밀번호를 입력하세요"	>
 							</div>
 	
-							<!-- 이메일 -->
+							<!-- 이름 -->
 							<div class="form-group">
 								<label class="form-text" for="input-name">이름</label> 
 								<input type="text" id="input-name" name="name" value="${requestScope.userPerson.name}" placeholder="이름을 입력하세요">
 							</div>
 							
-							<!-- //나이 -->
+							<!-- //성별 -->
 							<div class="form-group">
 								<span class="form-text">성별</span> 
 								
-								<label for="rdo-male">남</label> 
-								<input type="radio" id="rdo-male" name="gender" value="female" > 
+								<c:choose>
+									<c:when test="${requestScope.userPerson.gender eq 'male' }">				
+										<label for="rdo-male">남</label> 
+										<input type="radio" id="rdo-male" name="gender" value="male" checked="checked"> 
+										<label for="rdo-female">여</label> 
+										<input type="radio" id="rdo-female" name="gender" value="female"> 
+									</c:when>
+									<c:otherwise>																	
+										<label for="rdo-male">남</label> 
+										<input type="radio" id="rdo-male" name="gender" value="male"> 
+										<label for="rdo-female">여</label> 
+										<input type="radio" id="rdo-female" name="gender" value="female" checked="checked">
+										
+									</c:otherwise>
+								</c:choose>
 								
-								<label for="rdo-female">여</label> 
-								<input type="radio" id="rdo-female" name="gender" value="male" > 
 							</div>
 	
 							<!-- 버튼영역 -->

@@ -79,11 +79,11 @@ public class UserController extends HttpServlet {
 				
 				//★세션 영역의 어트리뷰트에 데이터 넣기
 				//세션 주소 불러오기
-				 HttpSession session = request.getSession();
-				 //세션 영역에 객체 넣기
-				 session.setAttribute("authUser", authVo);
+				HttpSession session = request.getSession();
+				//세션 영역에 객체 넣기
+				session.setAttribute("authUser", authVo);
 				
-				 WebUtil.redirect(request, response, "/mysite/main");
+				WebUtil.redirect(request, response, "/mysite/main");
 			}
  
 		} else if("logout".equals(action)) {
