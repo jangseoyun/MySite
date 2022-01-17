@@ -1,2 +1,0 @@
-# MySite
-mysite model2 
